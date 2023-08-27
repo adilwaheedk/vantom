@@ -51,6 +51,8 @@ const load_text = document.querySelector("#load-text");
 
 // Init the scene
 scene = new THREE.Scene();
+const color2 = new THREE.Color( 0Xffffff );
+scene.background = color2;
 
 // Init the renderer
 renderer = new THREE.WebGLRenderer({canvas, antialias: true});
