@@ -41,7 +41,7 @@ const sentences = [
 //    "talk.mp3",
 //]
 
-const MODEL_PATH = "static/vantom2.glb";
+const MODEL_PATH = "static/vantom2-v2.glb";
 const canvas = document.querySelector("#c");
 const speak_btn = document.querySelector("#speak-btn");
 const bx = document.querySelector(".vertical-centered-box");
