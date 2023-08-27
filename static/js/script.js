@@ -41,7 +41,7 @@ const sentences = [
 //    "talk.mp3",
 //]
 
-const MODEL_PATH = "static/vantom/nm-decimated.gltf";
+const MODEL_PATH = "static/vantom.glb";
 const canvas = document.querySelector("#c");
 const speak_btn = document.querySelector("#speak-btn");
 const bx = document.querySelector(".vertical-centered-box");
@@ -106,6 +106,8 @@ loader.load(
     model.position.y = -10;
     model.position.z = 10;
     model.rotation.x = 0.30;
+    model.rotation.y = 3.5;
+
 
 //    mixer = new THREE.AnimationMixer(model);
 //    mixer.timeScale = 1.5;
