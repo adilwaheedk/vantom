@@ -41,7 +41,7 @@ const sentences = [
 //    "talk.mp3",
 //]
 
-const MODEL_PATH = "static/vantom.glb";
+const MODEL_PATH = "static/vantom2.glb";
 const canvas = document.querySelector("#c");
 const speak_btn = document.querySelector("#speak-btn");
 const bx = document.querySelector(".vertical-centered-box");
@@ -58,16 +58,35 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
 
 // Add a camera
-camera = new THREE.PerspectiveCamera(
-  50,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
-camera.position.z = 26;
-camera.position.x = 0;
-camera.position.y = -4;
 
+// For small devices
+//camera = new THREE.PerspectiveCamera(
+//  50,
+//  window.innerWidth / window.innerHeight,
+//  0.1,
+//  1000
+//);
+//camera.position.z = 26;
+//camera.position.x = 0;
+//camera.position.y = -4;
+
+// For large devices
+//camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 5000);
+//camera.rotation.y = 45/180*Math.PI;
+//camera.position.x = 800;
+//camera.position.y = 100;
+//camera.position.z = 1000;
+
+// Create a PerspectiveCamera
+camera = new THREE.PerspectiveCamera(
+  75,            // Field of view
+  window.innerWidth / window.innerHeight, // Aspect ratio
+  0.1,           // Near clipping plane
+  1000           // Far clipping plane
+);
+
+// Set the camera position
+camera.position.set(0, 0, 5);
 
 const loadingManager = new THREE.LoadingManager();
 
@@ -90,7 +109,14 @@ loadingManager.onLoad = function(MODEL_PATH, item, total){
   bx.style.transition = "opacity 0.5s";
 }
 
+var dracoLoader = new THREE.DRACOLoader(loadingManager);
+dracoLoader.setDecoderPath = "static/";
+// dracoLoader.setDecoderPath("https://github.com/mrdoob/three.js/tree/dev/examples/jsm/libs/draco/gltf");
+dracoLoader.setDecoderConfig = {type: "js"};
+
 var loader = new THREE.GLTFLoader(loadingManager);
+
+loader.setDRACOLoader(dracoLoader);
 
 loader.load(
   MODEL_PATH,
@@ -102,11 +128,11 @@ loader.load(
 // Uncomment this when in development, displays all the animations in console
     console.log(gltf.animations);
 
-    model.scale.set(6, 6, 6);
-    model.position.y = -10;
-    model.position.z = 10;
+    var scale = 2;
+    model.scale.set(scale, scale, scale);
+    model.position.y = -2;
+    model.position.z = 1;
     model.rotation.x = 0.30;
-    model.rotation.y = 3.5;
 
 
 //    mixer = new THREE.AnimationMixer(model);

@@ -52,17 +52,9 @@
     <script src="https://cdn.jsdelivr.net/gh/mrdoob/Three.js@r92/examples/js/loaders/GLTFLoader.js"></script>
     -->
 
-     <script type="importmap">
-			{
-				"imports": {
-					"three": "../static/js/three.module.js",
-					"three/addons/": "./jsm/"
-				}
-			}
-     </script>
-
      <script src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
      <script src="{{ url_for('static', filename='js/three.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/DRACOLoader.js') }}"></script>
      <script src="{{ url_for('static', filename='js/GLTFLoader.js') }}"></script>
      <script src="{{ url_for('static', filename='js/dat.gui.min.js') }}"></script>
      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
